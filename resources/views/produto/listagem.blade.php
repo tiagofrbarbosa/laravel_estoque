@@ -14,6 +14,7 @@
 		<td>Descrição</td>
 		<td>Quantidade</td>
 		<td>Detalhes</td>
+		<td>Remover</td>
 	</tr>
 	@foreach ($produtos as $p)
 	<tr class="{{$p->quantidade<=1 ? 'danger' : ''}}">
@@ -21,8 +22,11 @@
 		<td>{{ $p->valor }}</td>
 		<td>{{ $p->descricao }}</td>
 		<td>{{ $p->quantidade }}</td>
-		<td><a href="/produtos/mostra/<?= $p->id ?>">
+		<td><a href="{{action('ProdutoController@mostra', $p->id)}}">
 		<span class="glyphicon glyphicon-search"></span>
+		</a></td>
+		<td><a href="{{action('ProdutoController@remove', $p->id)}}">
+		<span class="glyphicon glyphicon-trash"></span>
 		</a></td>
 	</tr>
 @endforeach
